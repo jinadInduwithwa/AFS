@@ -74,7 +74,7 @@ export const validateRegistration = [
 
   body("role")
     .optional()
-    .isIn(["CUSTOMER", "RESTAURANT", "DELIVERY", "ADMIN"])
+    .isIn(["USER", "ADMIN"])
     .withMessage("Invalid role specified"),
 
   validateRequest,
@@ -196,7 +196,7 @@ export const validateUpdateUser = [
     .withMessage("Please provide a valid phone number"),
   body("role")
     .optional()
-    .isIn(["CUSTOMER", "RESTAURANT", "DELIVERY", "ADMIN"])
+    .isIn(["USER", "ADMIN"])
     .withMessage("Invalid role specified"),
   body("address.street")
     .optional()
