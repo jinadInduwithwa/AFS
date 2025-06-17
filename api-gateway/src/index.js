@@ -72,6 +72,18 @@ app.use(
   })
 );
 
+// Confine Space Service Proxy
+app.use(
+  "/api/confinespace",
+  createProxyMiddleware({
+    target: process.env.CONFINE_SPACE_SERVICE_URL,
+    ...proxyOptions,
+    pathRewrite: {
+      "^/api/confinespace": "/api/confinespace",
+    },
+  })
+);
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -84,4 +96,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`API Gateway running on port ${PORT}`);
   console.log(`Auth Service URL: ${process.env.AUTH_SERVICE_URL}`);
+  console.log(`Confine Space Service URL: ${process.env.CONFINE_SPACE_SERVICE_URL}`);
 });

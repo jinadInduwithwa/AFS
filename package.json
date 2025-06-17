@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Food Ordering System Backend Services",
   "scripts": {
-    "dev": "concurrently \"cd auth-service && yarn dev\" ",
-    "install-all": "concurrently \"cd auth-service && yarn install\""
+    "dev": "concurrently \"cd auth-service && yarn dev\" \"cd confined-space-service && yarn dev\" ",
+    "install-all": "concurrently \"cd auth-service && yarn install\" \"cd confined-space-service && yarn install\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
