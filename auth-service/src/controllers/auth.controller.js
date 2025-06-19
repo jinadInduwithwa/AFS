@@ -297,10 +297,10 @@ export class AuthController {
         success: true,
         user: {
           id: user._id,
+          role: user.role,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          role: user.role,
           isVerified: user.isVerified,
           isActive: user.isActive,
         },
