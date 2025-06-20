@@ -7,6 +7,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import logger from "./utils/logger.js";
 import confineSpaceRoutes from "./routes/confineSpaceRoutes.js";
+import confineSpaceLocation from "./routes/location.route.js";
 
 
 const app = express();
@@ -36,6 +37,7 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/api/confinespace", confineSpaceRoutes);
+app.use("/api/confinespace/locations", confineSpaceLocation);
 
 
 // Error handling middleware
