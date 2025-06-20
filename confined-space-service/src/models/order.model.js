@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 const OrderSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
+  technicianId: { type: String, required: true },
+  locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Location' },
   dateOfSurvey: { type: Date, required: true },
   surveyors: { type: [String], required: true },
   confinedSpaceNameOrId: { type: String, required: true },
