@@ -47,29 +47,10 @@ export class AuthController {
         firstName,
         lastName,
         address,
-        role: role || "CUSTOMER",
+        role: role || "USER",
       });
 
-      // If registering as a driver, create driver profile
-      if (role === "DELIVERY") {
-        try {
-          // Call driver service to create driver profile
-          await axios.post(
-            `${process.env.DRIVER_SERVICE_URL}/api/drivers/register`,
-            {
-              userId: user._id,
-              vehicleType,
-              vehicleNumber,
-              location: [0, 0], // Default location
-            }
-          );
-        } catch (error) {
-          // If driver profile creation fails, delete the user
-          await User.findByIdAndDelete(user._id);
-          throw new Error("Failed to create driver profile");
-        }
-      }
-
+      
       const token = jwt.sign(
         { userId: user._id, email: user.email, role: user.role },
         process.env.JWT_SECRET,
